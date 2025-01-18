@@ -1,3 +1,0 @@
-# ActionsInAction
-
-Test trigger

@@ -2,6 +2,8 @@
 
 Repo for learning MkDocs, GitHub Pages, and GitHub Actions 
 
+See corresponding GitHub Pages site https://cjoakim.github.io/mkdocs-github-actions-101/
+
 ---
 
 ## Lessons Learned and Quick Start
@@ -37,6 +39,32 @@ Repo for learning MkDocs, GitHub Pages, and GitHub Actions
 
 - **You DON'T need to use GitHub Actions to build and deploy the GitHub Pages**
   - as described above, build and test the docs locally, then **mkdocs gh-deploy**
+
+---
+
+## Screen Shots
+
+<p align="center">
+  <img src="img/github-pages-config.png" width="90%">
+</p>
+
+GitHub Pages configuration - note the source, branch, and directory.
+
+---
+
+<p align="center">
+  <img src="img/github-actions-list.png" width="90%">
+</p>
+
+List of executed GitHub Actions.
+
+---
+
+<p align="center">
+  <img src="img/github-actions-detail.png" width="90%">
+</p>
+
+Detail of an executed GitHub Action.
 
 ---
 
