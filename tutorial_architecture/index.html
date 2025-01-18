@@ -1,0 +1,699 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/cjoakim/actions-101/tutorial_architecture/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../tutorial_graph/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Tutorial architecture - Actions 101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aigraph4pg-tutorial-solution-architecture-and-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Actions 101" class="md-header__button md-logo" aria-label="Actions 101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Actions 101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Actions 101" class="md-nav__button md-logo" aria-label="Actions 101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Actions 101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apache AGE Graph reference and tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tutorial architecture
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial architecture
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aigraph4pg-tutorial-solution-architecture-and-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AIGraph4pg Tutorial : Solution Architecture and Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AIGraph4pg Tutorial : Solution Architecture and Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation-language-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Language: Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-visualization-d3js" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Visualization: D3.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_opencypher_gen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial opencypher gen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_pg_admin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial pg admin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_relational/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial relational
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_vector_search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial vector search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Tutorial architecture</h1>
+
+<h2 id="aigraph4pg-tutorial-solution-architecture-and-implementation">AIGraph4pg Tutorial : Solution Architecture and Implementation</h2>
+<hr />
+<h5 id="implementation-language-python">Implementation Language: Python</h5>
+<p>This reference implementation was developed with the <strong>Python</strong>
+programming language, but Python isn't required for your implementation.
+There are PostgreSQL driver libraries in multiple programming languages
+such as <strong>Java, C#, Node.js/TypeScript, Ruby, Go, R</strong>, and others.
+Your solution can be built with your choice of a programming language
+that supports PostgreSQL.
+The complete list of <a href="https://wiki.postgresql.org/wiki/List_of_drivers">PostgreSQL drivers</a>
+is listed here.This Python implementation makes use of the following primary libraries, which are available
+at the <a href="https://pypi.org/">Python Package Index (PyPI)</a>.</p>
+<ul>
+<li><a href="https://pypi.org/project/psycopg/">psycopg</a>
+  PostgreSQL driver supporting both Synchronous and Asynchronous calls</li>
+<li><a href="https://pypi.org/project/fastapi/">fastapi</a>
+  Modern Asynchronous Web Framework</li>
+<li><a href="https://pypi.org/project/openai/">openai</a>
+  Provides convenient access to the Azure OpenAI REST API</li>
+<li><a href="https://pypi.org/project/ageqrp/">ageqrp</a>
+  Small library used to parse the results of Apache AGE queries with psycopg</li>
+<li><a href="https://pypi.org/project/Hypercorn/">hypercorn</a>
+  Web server which runs your fastapi python module</li>
+</ul>
+<p>So as to focus on the PostgreSQL and Apache AGE aspects of the solution,
+the codebase intentionally doesn't use an Object-Relational Manager (ORM) such as
+<a href="https://pypi.org/project/SQLAlchemy/">SQLAlchemy</a>.
+You are free, of course, to use any programming language and set of libraries
+for your implementation.</p>
+<hr />
+<h5 id="graph-visualization-d3js">Graph Visualization: D3.js</h5>
+<p>This reference implementation uses the free and open-source
+<a href="https://d3js.org/">D3.js</a> JavaScript library.
+With D3.js you can create beautiful and interactive visualizations
+of your Apache AGE graph data.Other open-source and proprietary graph visualization libraries are available.
+<a href="https://cytoscape.org/">Cytoscape</a> is one of
+the best alternatives to D3.js.</p>
+<hr />
+<h5 id="development-environment">Development Environment</h5>
+<p>This solution was developed with the following recommended development tools:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code (VSC)</a>
+  VSC is a lightweight yet extensible and full featured text editor and
+  Integrated Development Environment (IDE).
+  It is produced by Microsoft and free of charge.
+  It is available for Windows, Linux, and MacOS.</li>
+<li><a href="https://github.com/features/copilot">GitHub Copilot</a>
+  AI-assisted code completion tool that works with VSC.</li>
+<li><a href="https://www.postgresql.org/docs/current/app-psql.html">psql</a>
+  A terminal-based front-end to PostgreSQL.
+  You can execute psql from within Windows PowerShell or Linux/macOS terminal
+  to interact with your Azure PostgreSQL database.</li>
+<li><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>
+  and <a href="https://docs.docker.com/compose/">Docker Compose</a>
+  are recommended tools for creating and testing container-based applications.
+  The use of these tools, however, is not further discussed in this tutorial
+  as they aren't necessary to execute the solution from your development computer.
+  See the Deployment Environment section, below, that lists two execellent Azure PaaS
+  services where your Docker containers can be deployed to.</li>
+</ul>
+<hr />
+<h5 id="deployment-environment">Deployment Environment</h5>
+<p>The following <strong>Azure Platform as a Service (PaaS) services</strong> are required
+for this solution:</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview">Azure Database for PostgreSQL - Flexible Server</a>
+  Azure Database for PostgreSQL is a fully managed database service that provides
+  Enterprise functionality over open-source PostgreSQL.
+  The PostgreSQL open ecosystem supports <strong>extensions</strong> to the database;
+  this is one of the compelling features of PostgreSQL. For example, the
+  <strong>postgis</strong> extension supports GPS and spatial applications while<strong>pg_cron</strong> supports job schedling similar to linux.This reference implementation uses the following extensions:</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/postgresql/extensions/concepts-extensions-versions#age">age</a>
+    Apache AGE project for graph database functionality with openCypher.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/postgresql/extensions/concepts-extensions-versions#vector">vector</a>
+    Standard vector search functionality (but not DiskANN vector search)</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/postgresql/extensions/concepts-extensions-versions#azure_ai">azure_ai</a>
+    Provides Azure AI and ML Services integration for PostgreSQL.See the <a href="https://learn.microsoft.com/en-us/azure/postgresql/extensions/concepts-extensions-versions">complete list</a>
+  of supported extensions for Azure Database for PostgreSQL.This reference implementation uses one relational table, named <strong>legal_cases</strong>,
+  which has the following structure as shown in the following psql output.
+  Note that there is a <strong>jsonb</strong> column as well as a
+  <strong>vector(1536)</strong> for the embeddings generated by the Azure OpenAI
+  text-embedding-ada-002 model described later on this page.
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dev=&gt; \d legal_cases
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Table &quot;public.legal_cases&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Column              |          Type           | Collation | Nullable |                 Default
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--------------------+-------------------------+-----------+----------+-----------------------------------------
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  id                | bigint                  |           | not null | nextval(&#39;legal_cases_id_seq&#39;::regclass)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  name              | character varying(1024) |           |          |
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  name_abbreviation | character varying(1024) |           |          |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  case_url          | character varying(1024) |           |          |
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  decision_date     | date                    |           |          |
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  court_name        | character varying(1024) |           |          |
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  citation_count    | integer                 |           |          |
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  text_data         | text                    |           |          |
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  json_data         | jsonb                   |           |          |
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  embedding         | vector(1536)            |           |          |
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Indexes:
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  &quot;legal_cases_pkey&quot; PRIMARY KEY, btree (id)
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  &quot;idx_legal_cases_citation_count&quot; btree (citation_count)
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>  &quot;idx_legal_cases_court_name&quot; btree (court_name)
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>  &quot;idx_legal_cases_decision_date&quot; btree (decision_date)
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>  &quot;idx_legal_cases_ivfflat_embedding&quot; ivfflat (embedding vector_cosine_ops) WITH (lists=&#39;50&#39;)
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>  &quot;idx_legal_cases_json_data_gin&quot; gin (json_data)
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>  &quot;idx_legal_cases_name_abbreviation&quot; btree (name_abbreviation)
+</code></pre></div>
+  This reference implementation also uses one <strong>Apache AGE graph</strong>,
+  which is also named <strong>legal_cases</strong>. This name does not have to
+  correspond to the above relational table name, as they are two distinct objects
+  in PostgreSQL. They are populated separately.The graph is described in the Graph Queries page of this application.</li>
+<li><a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service/">Azure OpenAI</a>
+  PaaS service to access and invoke, via a Python library, the Artificial Intelligence (AI)
+  models implemented by OpenAI.
+  Witnin your Azure OpenAI service, these two model deployments are required:</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings">text-embedding-ada-002</a>
+    Used for generating <strong>embeddings</strong> from text input.
+    In the case of this model the embedding values contain 1,536 dimensions,
+    meaning that each embedding is an array of 1,536 floating point numbers
+    which capture the semantic meaning of the given text.
+    The embeddings are used in <strong>vector search</strong> to search the
+    database for rows with similar semantic meaning to the given vector or embedding.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-4">gpt-4o</a>
+    This model is used in this reference application for <strong>Generative AI</strong>
+    to generate openCypher queries from natural language.
+    This GenAI functionality is currently under development in this repo.</li>
+<li><a href="https://azure.microsoft.com/en-us/products/machine-learning">Azure Machine Learning (AML)</a>
+  Enterprise-grade AI PaaS service for the end-to-end machine learning (ML) lifecycle
+  including model deployments.
+  AML is not yet used by this reference implementation, as
+  <a href="https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-the-semantic-ranking-solution-for-azure-database-for-postgresql/4298781">semantic ranking</a>
+  of vector search results is not yet implemented in this repo.</li>
+<li>Either Azure Container Apps (ACA)
+  or Azure Kubernetes Service (AKS)
+  are recommended for hosting your deployed <strong>web application</strong>
+  Docker containers in Azure.You will use a <a href="https://learn.microsoft.com/en-us/azure/container-registry/">Azure Container Registry (ACR)</a>
+  to store your Docker images for deployment to ACA or AKS.
+  Likewise, in an Azure deployment, you should use an <a href="https://learn.microsoft.com/en-us/azure/key-vault/">Azure Key Vault (AKV)</a>
+  to store your secrets and connection strings.<strong>Deployment of the web application, however, is out-of-scope for this reference implementation</strong>
+  as the web app is intended to run from your development computer.
+  Thus, ACA, AKS, ACR, and AKV are not used in this reference implementation.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/cjoakim/actions-101"  target="_blank" rel="noopener">Microsoft</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

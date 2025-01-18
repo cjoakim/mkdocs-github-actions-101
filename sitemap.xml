@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_architecture/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_graph/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_home/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_opencypher_gen/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_pg_admin/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_relational/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/cjoakim/actions-101/tutorial_vector_search/</loc>
+         <lastmod>2025-01-18</lastmod>
+    </url>
+</urlset>
