@@ -1,5 +1,5 @@
-site_name: Actions 101
-site_url: https://github.com/cjoakim/actions-101
+site_name: MkDocs and GitHub Actions 101
+site_url: https://github.com/cjoakim/mkdocs-github-actions-101
 theme:
   name: material
   features:
@@ -59,4 +59,4 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 copyright: |
-  &copy; 2025 <a href="https://github.com/cjoakim/actions-101"  target="_blank" rel="noopener">Microsoft</a>
+  &copy; 2025 <a href="https://github.com/cjoakim/mkdocs-github-actions-101"  target="_blank" rel="noopener">Microsoft</a>

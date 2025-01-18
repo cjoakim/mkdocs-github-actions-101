@@ -65,7 +65,6 @@ jobs:
       - name: Identify current directory
         run: |
           pwd
-        # /home/runner/work/actions-101/actions-101
 
       - name: Check Python ecosystem versions
         run: |
