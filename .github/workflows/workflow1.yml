@@ -1,0 +1,124 @@
+name: Workflow1
+
+on: 
+  push:
+    branches: 
+      - main
+  
+  workflow_dispatch:
+    inputs:
+      homedrive:
+        description: 'The home drive on the machine'
+        required: false
+      logLevel:
+        description: 'Log level'
+        default: 'debug' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      tag:
+        description: 'Apply tag after successfull test run'
+        required: false 
+        type: boolean 
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false 
+  
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: |
+          echo "inputs.homedrive:         ${{ inputs.homedrive }}"
+          echo "inputs.logLevel:          ${{ inputs.logLevel }}"
+          echo "inputs.tag:               ${{ inputs.tag }}"
+          echo "inputs.environment:       ${{ inputs.environment }}"
+          echo "github.action_repository: ${{ github.action_repository }}"
+          echo "github.actor:             ${{ github.actor }}"
+          echo "github.repository_owner:  ${{ github.repository_owner }}"
+          echo "github.event_name:        ${{ github.event_name }}"
+          # inputs.homedrive:         
+          # inputs.logLevel:          debug
+          # inputs.tag:               false
+          # inputs.environment:       
+          # github.action_repository: 
+          # github.actor:             cjoakim
+          # github.repository_owner:  cjoakim
+          # github.event_name:        workflow_dispatch
+        name: Workflow Inputs
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+      
+      - run: echo "👋 Hello World!"
+      
+      - name: Checkout
+        uses: actions/checkout@v4 
+      
+      - name: List files in repository
+        run: |
+          echo "The repository ${{ github.repository }} contains th efollowing files:"
+          tree
+
+      - name: Identify current directory
+        run: |
+          pwd
+        # /home/runner/work/actions-101/actions-101
+
+      - name: Check Python ecosystem versions
+        run: |
+          python --version
+          pip --version
+          which python
+          which pip
+        # Python 3.12.3
+        # pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)
+        # /usr/bin/python
+        # /usr/bin/pip
+
+      - name: Check Node.js ecosystem versions
+        run: |
+          node --version
+          which node
+        # v20.18.1
+        # /usr/local/bin/node
+
+      - name: Check Java ecosystem versions
+        run: |
+          java --version
+          gradle --version
+          mvn --version
+          which java
+          which gradle
+          which mvn
+        # openjdk 17.0.13 2024-10-15
+        # OpenJDK Runtime Environment Temurin-17.0.13+11 (build 17.0.13+11)
+        # OpenJDK 64-Bit Server VM Temurin-17.0.13+11 (build 17.0.13+11, mixed mode, sharing)
+        # Welcome to Gradle 8.12!
+        # Here are the highlights of this release:
+        #  - Enhanced error and warning reporting with the Problems API
+        #  - File-system watching support on Alpine Linux
+        #  - Build and test Swift 6 libraries and apps
+        # For more details see https://docs.gradle.org/8.12/release-notes.html
+        # ------------------------------------------------------------
+        # Gradle 8.12
+        # ------------------------------------------------------------
+        # Build time:    2024-12-20 15:46:53 UTC
+        # Revision:      a3cacb207fec727859be9354c1937da2e59004c1
+        # Kotlin:        2.0.21
+        # Groovy:        3.0.22
+        # Ant:           Apache Ant(TM) version 1.10.15 compiled on August 25 2024
+        # Launcher JVM:  17.0.13 (Eclipse Adoptium 17.0.13+11)
+        # Daemon JVM:    /usr/lib/jvm/temurin-17-jdk-amd64 (no JDK specified, using current Java home)
+        # OS:            Linux 6.8.0-1017-azure amd64
+        
+        # Apache Maven 3.8.8 (4c87b05d9aedce574290d1acc98575ed5eb6cd39)
+        # Maven home: /usr/share/apache-maven-3.8.8
+        # Java version: 17.0.13, vendor: Eclipse Adoptium, runtime: /usr/lib/jvm/temurin-17-jdk-amd64
+        # Default locale: en, platform encoding: UTF-8
+        # OS name: "linux", version: "6.8.0-1017-azure", arch: "amd64", family: "unix"
+        # /usr/bin/java
+        # /usr/bin/gradle
+        # /usr/bin/mvn

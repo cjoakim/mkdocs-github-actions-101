@@ -1,0 +1,92 @@
+name: "chapter 09: create-container-and-push"
+permissions:
+  actions: write
+  packages: write
+  contents: read
+on:
+  #define the input parameters for this workflow used in the workflow call
+  workflow_call:
+    inputs:
+      imageRepository:
+        required: true
+        type: string
+      containerRegistry:
+        required: true
+        type: string
+      dockerfilePath:
+        required: true
+        type: string
+      namespace:
+        required: true
+        type: string
+    secrets:
+      registryPassword:
+        required: true
+  # the input parameters are also defined for a manual trigger
+  workflow_dispatch:
+    inputs:
+      imageRepository:
+        required: true
+        type: string
+        default: 'frontend'
+      containerRegistry:
+        required: true
+        type: string
+        default: 'ghcr.io/vriesmarcel'
+      dockerfilePath:
+        required: true
+        type: string
+        default: 'frontend/Dockerfile'
+      namespace:
+        required: true
+        type: string
+        default: 'globoticket'
+jobs:
+  build:
+    # we check out the sources, determine the version number and login to the container registry  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0
+
+      - name: Install GitVersion 
+        uses: gittools/actions/gitversion/setup@v0.10.2
+        with: 
+          versionSpec: '5.x'
+
+      - name: Determine Version 
+        id: gitversion 
+        uses: gittools/actions/gitversion/execute@v0.10.2
+
+      - name: Login to GitHUb
+        uses: docker/login-action@v2 
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.registryPassword }}
+      # we use docker buildx to create a builder instance and then build and push the image
+      - name: select docker driver
+        run: |
+          docker buildx create --use --driver=docker-container
+      # we use this action to determine the labels for the image
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: actions-with-actions/globoticket 
+      # build and push the image to the container registry
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+            context: ${{github.workspace}}
+            file: ${{inputs.dockerfilePath}}
+            push: true
+            tags: ${{inputs.containerRegistry}}/${{inputs.imageRepository}}:${{env.GitVersion_SemVer}}
+            cache-from: type=gha
+            cache-to: type=gha,mode=max
+            labels: ${{steps.meta.outputs.labels}}
+     
+
+

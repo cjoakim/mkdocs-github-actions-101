@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+# Kubernetes deployment specification. We want to deploy our container frontend
+# to the cluster, in the namespace globoticket.
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: globoticket
+  labels:
+    app: frontend
+# We want to deploy 3 replicas of the frontend and deploy
+# them with a rolling update strategy
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+ # here is the specification of the container we want to deploy
+ # we set the resource limits and requests according to best practices
+ # we pull the image from github container registry, using the secrets
+ # defined in the pullsecret
+    spec:
+      containers:
+      - name: frontend
+        image: ghcr.io/vriesmarcel/frontend:#{Build.version}#
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "750m"
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: ApiConfigs__EventsCatalog__Uri
+          value: http://catalog:8080
+        - name: ApiConfigs__Ordering__Uri
+          value: http://ordering:8080
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+      imagePullSecrets:
+        - name: pullsecret
