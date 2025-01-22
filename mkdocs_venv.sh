@@ -14,6 +14,8 @@ echo 'activating new venv ...'
 source venv/bin/activate
 
 echo 'pip install mkdocs ...'
+# https://pypi.org/project/mkdocs-material/
 pip install mkdocs-material
+pip install mkdocs-material[imaging]
 
 pip list

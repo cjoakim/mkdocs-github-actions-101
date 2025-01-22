@@ -23,12 +23,15 @@ See corresponding GitHub Pages site https://cjoakim.github.io/mkdocs-github-acti
     - see mkdocs_venv.ps1 and mkdocs_venv.ps1
     - execute the mkdocs_venv.* script for your OS (Win or mac/linux)
     - activate the python virtual environment
-  - run "mkdocs build" to build the pretty html/css docs into the /site directory
-  - run "mkdocs serve" to run a local http server
+  - run **mkdocs --help** to see the help content for the list of commands
+  - run **mkdocs build --help** to see the help for the build command 
+  - run **mkdocs build** to build the pretty html/css docs into the /site directory
+  - run **mkdocs serve** to run a local http server and display the docs
     - visit http://127.0.0.1:8000/ with your web browser to see/preview the docs
     - these docs are served locally from the git-ignored /site directory
+    - this simulates what the docs will look like when deployed to GitHub
   - deploy the docs to **GitHub Pages** with the following command
-    - mkdocs gh-deploy
+    - **mkdocs gh-deploy**
     - this builds the /site dir to the / (i.e. - root) dir of the the gh-pages branch
     - See site **https://cjoakim.github.io/mkdocs-github-actions-101/**
       - Format of Pages URL is https://<owner>.github.io/<repo-name>/
