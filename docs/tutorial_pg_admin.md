@@ -1,4 +1,3 @@
-
 ## AIGraph4pg Tutorial : Azure PostgreSQL Administration
 
 ##### PostgreSQL Documentation

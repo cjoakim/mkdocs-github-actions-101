@@ -1,4 +1,4 @@
-site_name: MkDocs and GitHub Actions 101
+site_name: AIGraph4pg
 site_url: https://github.com/cjoakim/mkdocs-github-actions-101
 theme:
   name: material
@@ -30,16 +30,19 @@ theme:
 
 plugins:
   - search
-  # - social
 
-# extra:
-#   social:
-#     - icon: fontawesome/brands/github-alt
-#       link: https://github.com/james-willett
-#     - icon: fontawesome/brands/twitter
-#       link: https://twitter.com/TheJamesWillett
-#     - icon: fontawesome/brands/linkedin
-#       link: https://www.linkedin.com/in/willettjames/
+# nav: controls which docs/*.md files are included in the
+# navigation UI, and their sequence.  Default is all *.md files
+# in an alphanumeric order.
+nav:
+  - README.md
+  - tutorial_architecture.md
+  - tutorial_pg_admin.md
+  - tutorial_relational.md
+  - tutorial_graph.md
+  - tutorial_vector_search.md
+  - tutorial_opencypher_gen.md
+  - faq.md
 
 markdown_extensions:
   - pymdownx.highlight:

@@ -1,4 +1,3 @@
-
 ## AIGraph4pg Tutorial : Generative AI for openCypher
 
 ##### Generative AI

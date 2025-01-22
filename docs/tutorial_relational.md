@@ -1,4 +1,3 @@
-
 ## AIGraph4pg Tutorial : Relational Functionality
 
 ##### PostgreSQL Documentation

@@ -1,4 +1,3 @@
-
 ## AIGraph4pg Tutorial : Graphs, Apache AGE, and openCypher
 
 ---

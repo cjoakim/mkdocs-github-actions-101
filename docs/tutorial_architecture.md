@@ -1,5 +1,4 @@
-
-## AIGraph4pg Tutorial : Solution Architecture and Implementation
+# AIGraph4pg Tutorial : Solution Architecture and Implementation
 
 ---
 

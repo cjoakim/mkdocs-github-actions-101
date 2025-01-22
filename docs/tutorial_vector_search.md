@@ -1,4 +1,3 @@
-
 ## AIGraph4pg Tutorial : Vector Search
 
 ##### Coming Soon: Advanced Vector Search with DiskANN and Semantic Ranking
