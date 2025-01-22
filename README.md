@@ -31,9 +31,12 @@ See corresponding GitHub Pages site https://cjoakim.github.io/mkdocs-github-acti
     - these docs are served locally from the git-ignored /site directory
     - this simulates what the docs will look like when deployed to GitHub
   - deploy the docs to **GitHub Pages** with the following command
-    - **mkdocs gh-deploy**
-    - this builds the /site dir to the / (i.e. - root) dir of the the **gh-pages branch** of the repo
-    - See site **https://cjoakim.github.io/mkdocs-github-actions-101/**
+    - **mkdocs gh-deploy**, which does the following:
+      - builds the /site directory
+      - pushes the /site dir to the root directory of the the **gh-pages branch** of the repo
+      - the **gh-pages branch** is where you configure GitHub pages to serve from (see below)
+    - See GitHub Pages site **https://cjoakim.github.io/mkdocs-github-actions-101/**
+      - This URL corresponds to the repo https://github.com/cjoakim/mkdocs-github-actions-101
       - Format of Pages URL is https://<owner>.github.io/<repo-name>/
 
 - **Configure GitHub Pages** for the repo
