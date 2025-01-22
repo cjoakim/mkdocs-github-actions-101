@@ -8,8 +8,10 @@
       
       
       
-        <link rel="canonical" href="https://github.com/cjoakim/mkdocs-github-actions-101/tutorial_home/">
+        <link rel="canonical" href="https://github.com/cjoakim/mkdocs-github-actions-101/faq/">
       
+      
+        <link rel="prev" href="../tutorial_opencypher_gen/">
       
       
       
@@ -18,7 +20,7 @@
     
     
       
-        <title>Tutorial home - AIGraph4pg</title>
+        <title>AIGraph4pg : Frequently Asked Questions (FAQ) - AIGraph4pg</title>
       
     
     
@@ -70,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aigraph4pg-tutorial-home" class="md-skip">
+        <a href="#aigraph4pg-frequently-asked-questions-faq" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial home
+              AIGraph4pg : Frequently Asked Questions (FAQ)
             
           </span>
         </div>
@@ -366,10 +368,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    AIGraph4pg : Frequently Asked Questions (FAQ)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -378,6 +400,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -397,27 +457,47 @@
                   
 
 
-  <h1>Tutorial home</h1>
-
-<h2 id="aigraph4pg-tutorial-home">AIGraph4pg Tutorial : Home</h2>
-<hr />
-<h5 id="documentation-links">Documentation Links</h5>
-<p>This reference implemention is primarily built upon the Azure PaaS services
-and open-source software listed below:</p>
+<h1 id="aigraph4pg-frequently-asked-questions-faq">AIGraph4pg : Frequently Asked Questions (FAQ)</h1>
+<p>This page addresses some of the <strong>Frequently Asked Questions</strong>
+about the AIGraph4pg solution.  It will be updated in an ongoing
+manner to address common customer questions.</p>
+<h2 id="list-of-questions">List of Questions</h2>
 <ul>
-<li><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Azure Database for PostgreSQL - Flexible Server</a></li>
-<li><a href="https://age.apache.org/">Apache AGE Graph Database</a></li>
-<li><a href="https://opencypher.org/">openCypher language</a></li>
-<li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/">Azure OpenAI</a></li>
-<li><a href="https://www.python.org/">Python</a>
-  and software libraries hosted a the
-  <a href="https://pypi.org/">The Python Package Index (PyPI)</a></li>
+<li><a href="#azure_postgresql">What is Azure PostgreSQL Flex Server?</a></li>
+<li><a href="#apache_age">What is Apache AGE?</a></li>
+<li><a href="#is_python_required">This repo uses Python, is Python required?</a></li>
 </ul>
-<p>See the <strong>Architecture</strong> page for more details.One purpose of this reference application is to provide a <strong>tutorial</strong>
-of these topics, generally in a <strong>left-to-right</strong> manner
-in the list of topics in the navigation bar at the top of each page
-(i.e. - Home, Architecture, PG Admin Queries, etc.)This reference application is hosted at the
-<a href="https://github.com/cjoakim/AIGraph4pgPrivate">AIGraph4pg Public GitHub repository</a></p>
+<hr />
+<h2 id="answers">Answers</h2>
+<p><a name="azure_postgresql"></a></p>
+<p><strong>Q: What is Azure PostgreSQL Flex Server?</strong></p>
+<p><strong>A:</strong> Azure Database for PostgreSQL - Flexible Server is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability.</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/products/postgresql/">Introduction</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Documentation</a></li>
+</ul>
+<p>Throughout this GitHub repo, the product name may often be referred to as simply
+<strong>Azure PostgreSQL</strong>.</p>
+<hr />
+<p><a name="apache_age"></a></p>
+<p><strong>Q: What is Apache AGE?</strong></p>
+<p><strong>A:</strong> Apache AGE is a PostgreSQL extension that provides graph database functionality.
+The graph query language that AGE uses is openCypher.
+The AGE extension is now supported in Azure PostgreSQL Flex Server, thus enabling 
+GraphRAG, OmniRAG, and AI-powered applications.</p>
+<ul>
+<li><a href="https://age.apache.org">AGE Home Page</a></li>
+<li><a href="https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-support-for-graph-data-in-azure-database-for-postgresql-preview/4275628">Introducing support for Graph data in Azure Database for PostgreSQL</a></li>
+</ul>
+<hr />
+<p><a name="is_python_required"></a></p>
+<p><strong>Q: This repo uses Python, is Python required?</strong></p>
+<p><strong>A:</strong> This reference implementation was developed with the <strong>Python</strong>
+programming language, but Python <strong>isn't</strong> required for your implementation.</p>
+<p>There are PostgreSQL driver libraries in multiple programming languages
+such as <strong>Java, C#, Node.js/TypeScript, Ruby, Go, R</strong>, and others.
+Your solution can be built with your choice of a programming language
+that supports PostgreSQL.</p>
 
 
 

@@ -14,7 +14,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../tutorial_graph/">
+        <link rel="next" href="../tutorial_pg_admin/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Tutorial architecture - MkDocs and GitHub Actions 101</title>
+        <title>AIGraph4pg Tutorial : Solution Architecture and Implementation - AIGraph4pg</title>
       
     
     
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="MkDocs and GitHub Actions 101" class="md-header__button md-logo" aria-label="MkDocs and GitHub Actions 101" data-md-component="logo">
+    <a href=".." title="AIGraph4pg" class="md-header__button md-logo" aria-label="AIGraph4pg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -104,13 +104,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            MkDocs and GitHub Actions 101
+            AIGraph4pg
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial architecture
+              AIGraph4pg Tutorial : Solution Architecture and Implementation
             
           </span>
         </div>
@@ -215,13 +215,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="MkDocs and GitHub Actions 101" class="md-nav__button md-logo" aria-label="MkDocs and GitHub Actions 101" data-md-component="logo">
+    <a href=".." title="AIGraph4pg" class="md-nav__button md-logo" aria-label="AIGraph4pg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    MkDocs and GitHub Actions 101
+    AIGraph4pg
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -237,7 +237,7 @@
         
   
   <span class="md-ellipsis">
-    Apache AGE Graph reference and tutorial
+    Introduction
   </span>
   
 
@@ -259,12 +259,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Tutorial architecture
+    AIGraph4pg Tutorial : Solution Architecture and Implementation
   </span>
   
 
@@ -275,7 +277,7 @@
         
   
   <span class="md-ellipsis">
-    Tutorial architecture
+    AIGraph4pg Tutorial : Solution Architecture and Implementation
   </span>
   
 
@@ -287,6 +289,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -295,16 +299,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aigraph4pg-tutorial-solution-architecture-and-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      AIGraph4pg Tutorial : Solution Architecture and Implementation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AIGraph4pg Tutorial : Solution Architecture and Implementation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#implementation-language-python" class="md-nav__link">
     <span class="md-ellipsis">
       Implementation Language: Python
@@ -312,8 +306,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#graph-visualization-d3js" class="md-nav__link">
     <span class="md-ellipsis">
       Graph Visualization: D3.js
@@ -321,8 +315,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#development-environment" class="md-nav__link">
     <span class="md-ellipsis">
       Development Environment
@@ -330,8 +324,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#deployment-environment" class="md-nav__link">
     <span class="md-ellipsis">
       Deployment Environment
@@ -339,76 +333,11 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorial_graph/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tutorial graph
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorial_home/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tutorial home
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorial_opencypher_gen/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tutorial opencypher gen
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -460,11 +389,71 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorial_graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorial_vector_search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Tutorial vector search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_opencypher_gen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial opencypher gen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AIGraph4pg : Frequently Asked Questions (FAQ)
   </span>
   
 
@@ -488,9 +477,7 @@
                   
 
 
-  <h1>Tutorial architecture</h1>
-
-<h2 id="aigraph4pg-tutorial-solution-architecture-and-implementation">AIGraph4pg Tutorial : Solution Architecture and Implementation</h2>
+<h1 id="aigraph4pg-tutorial-solution-architecture-and-implementation">AIGraph4pg Tutorial : Solution Architecture and Implementation</h1>
 <hr />
 <h5 id="implementation-language-python">Implementation Language: Python</h5>
 <p>This reference implementation was developed with the <strong>Python</strong>
