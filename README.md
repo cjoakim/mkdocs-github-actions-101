@@ -32,7 +32,7 @@ See corresponding GitHub Pages site https://cjoakim.github.io/mkdocs-github-acti
     - this simulates what the docs will look like when deployed to GitHub
   - deploy the docs to **GitHub Pages** with the following command
     - **mkdocs gh-deploy**
-    - this builds the /site dir to the / (i.e. - root) dir of the the gh-pages branch
+    - this builds the /site dir to the / (i.e. - root) dir of the the **gh-pages branch** of the repo
     - See site **https://cjoakim.github.io/mkdocs-github-actions-101/**
       - Format of Pages URL is https://<owner>.github.io/<repo-name>/
 
